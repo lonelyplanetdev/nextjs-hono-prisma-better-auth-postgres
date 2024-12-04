@@ -1,12 +1,18 @@
 # Next.js + Hono + Prisma - Mongo + BetterAuth
 
-## Features
+## Tech stack
 
 - Next.js 15
 - Hono
 - Prisma
 - Mongo
 - BetterAuth
+
+## Features
+
+- Private route with middleware
+- SWR
+- Hono RPC
 
 ## Setup
 

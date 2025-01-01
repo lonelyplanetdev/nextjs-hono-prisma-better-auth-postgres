@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { CircleIcon, Loader2 } from "lucide-react";
-import { authClient } from "@/lib/auth-client";
 import { fetchCallback } from "@/lib/utils";
+import { authClient } from "@/lib/auth-client";
 
 export function Login({ mode = "signin" }: { mode?: "signin" | "signup" }) {
   const searchParams = useSearchParams();
@@ -124,6 +124,7 @@ export function Login({ mode = "signin" }: { mode?: "signin" | "signup" }) {
               disabled={isPending}
               onClick={async () => {
                 if (mode === "signin") {
+                  // @ts-ignore this is a bug, the signIn.email exists but the type is not correct
                   await authClient.signIn.email(
                     {
                       email,
@@ -133,6 +134,7 @@ export function Login({ mode = "signin" }: { mode?: "signin" | "signup" }) {
                     fetchCallback({ setIsPending })
                   );
                 } else {
+                  // @ts-ignore this is a bug, the signUp.email exists but the type is not correct
                   await authClient.signUp.email(
                     {
                       email,

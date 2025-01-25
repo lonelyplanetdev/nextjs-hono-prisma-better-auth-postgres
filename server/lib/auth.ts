@@ -12,6 +12,5 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
-  // @ts-ignore, a bug error with the type of the plugins
   plugins: [organization(), twoFactor(), admin()],
 });

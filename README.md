@@ -22,6 +22,12 @@ bun install
 cp .env.template .env
 ```
 
+## Prisma
+
+```bash
+bun prisma generate
+```
+
 ## Run
 
 ```bash

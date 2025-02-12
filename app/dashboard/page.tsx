@@ -4,7 +4,7 @@ import PrivateRoute from "@/components/privateRoute";
 export default function DashboardPage() {
   return (
     <div>
-      <h1>Hola dashboard</h1>
+      <h1>Private dashboard</h1>
       <SignOutButton />
       <PrivateRoute />
     </div>

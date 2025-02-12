@@ -3,6 +3,7 @@
 import client from "@/lib/rpc";
 import type { InferRequestType } from "hono/client";
 import useSWR from "swr";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function PrivateRoute() {
   const $get = client.api.private.$get;
@@ -19,6 +20,14 @@ export default function PrivateRoute() {
       },
     })
   );
+
+  if (isLoading) {
+    return (
+      <div className="space-y-2">
+        <Skeleton className="h-6 w-32" />
+      </div>
+    );
+  }
 
   return (
     <div>

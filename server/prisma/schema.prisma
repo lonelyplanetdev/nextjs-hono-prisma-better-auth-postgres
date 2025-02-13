@@ -9,12 +9,12 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id               String       @id @map("_id")
+  id               String       @id
   name             String
   email            String
   emailVerified    Boolean
@@ -37,11 +37,11 @@ model User {
 }
 
 model Session {
-  id                   String   @id @map("_id")
+  id                   String   @id @default(uuid())
   expiresAt            DateTime
   token                String
-  createdAt            DateTime
-  updatedAt            DateTime
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
   ipAddress            String?
   userAgent            String?
   userId               String
@@ -54,7 +54,7 @@ model Session {
 }
 
 model Account {
-  id                    String    @id @map("_id")
+  id                    String    @id
   accountId             String
   providerId            String
   userId                String
@@ -69,11 +69,11 @@ model Account {
   createdAt             DateTime
   updatedAt             DateTime
 
-  @@map("account")
+  @@map("accounts")
 }
 
 model Verification {
-  id         String    @id @map("_id")
+  id         String    @id
   identifier String
   value      String
   expiresAt  DateTime
@@ -84,7 +84,7 @@ model Verification {
 }
 
 model Organization {
-  id          String       @id @map("_id")
+  id          String       @id
   name        String
   slug        String?
   logo        String?
@@ -98,7 +98,7 @@ model Organization {
 }
 
 model Member {
-  id             String       @id @map("_id")
+  id             String       @id
   organizationId String
   organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   userId         String
@@ -110,7 +110,7 @@ model Member {
 }
 
 model Invitation {
-  id             String       @id @map("_id")
+  id             String       @id
   organizationId String
   organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   email          String
@@ -124,7 +124,7 @@ model Invitation {
 }
 
 model TwoFactor {
-  id          String @id @map("_id")
+  id          String @id
   secret      String
   backupCodes String
   userId      String

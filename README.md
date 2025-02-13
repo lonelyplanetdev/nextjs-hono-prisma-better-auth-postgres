@@ -1,11 +1,11 @@
-# Next.js + Hono + Prisma - Mongo + BetterAuth
+# Next.js + Hono + Prisma - Postgres + BetterAuth
 
 ## Tech stack
 
 - Next.js 15
 - Hono
 - Prisma
-- Mongo
+- Postgres
 - BetterAuth
 
 ## Features
